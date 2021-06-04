@@ -519,7 +519,7 @@ static void bindScanCodeUnpressed(uint sc)
 
 static void bindMouseWheel(int increment)
 {
-  g_MouseWheel += std::max(-1.f, std::min(1.f, (float)increment/5));
+  g_MouseWheel += (float)increment * NAMESPACE::mouseWheelScale();
   ImGuiIO& io = ImGui::GetIO();
   if (!io.WantCaptureMouse) {
     if (prevMouseWheel) prevMouseWheel(increment);
